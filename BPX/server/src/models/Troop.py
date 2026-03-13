@@ -1,3 +1,6 @@
+from django.db import models
+
+
 from .Hero import Hero
 
 # class for troop data
@@ -6,46 +9,21 @@ from .Hero import Hero
 # get troop type (shooter, fighter, rider)
 
 # Class for a single Troop
-class Troop:
-    def __init__(
-            self,
-            heroes: list[Hero] = None,
-            troop_type: str = None,
-            hero_cp: int = 0,
-            tech_cp: int = 0,
-            equipment_cp: int = 0,
-            troop_cp: int = 0,
-            troop_atk: int = 0,
-            troop_atk_bonus: int = 0,
-            troop_def: int = 0,
-            troop_def_bonus: int = 0,
-            troop_hp: int = 0,
-            troop_total_dmg: int = 0,
-            troop_total_dmg_bonus: int = 0):
-         self.heroes = heroes
-         self.troop_type = troop_type
-         self.hero_cp = hero_cp
-         self.tech_cp = tech_cp
-         self.equipment_cp = equipment_cp
-         self.troop_cp = troop_cp
-         self.troop_atk = troop_atk
-         self.troop_atk_bonus = troop_atk_bonus
-         self.troop_def = troop_def
-         self.troop_def_bonus = troop_def_bonus
-         self.troop_hp = troop_hp
-         self.troop_total_dmg = troop_total_dmg
-         self.troop_total_dmg_bonus = troop_total_dmg_bonus
-         ...
+class Troop(models.Model):
+    # heroes = models.ForeignKey()
+    # troop_type = models.ForeignKey()
+    tech_cp = models.IntegerField()
+    equip_cp = models.IntegerField()
+    troop_atk_bonus = models.IntegerField()
+    troop_def = models.IntegerField()
+    troop_def_bonus = models.IntegerField()
+    troop_hp = models.IntegerField()
+    troop_total_dmg = models.IntegerField()
+    troop_total_dmg_bonus = models.IntegerField()
 
-    @property
-    def set_heroes(heroes):
-        ...
+    # @property
+    # def set_heroes(heroes):
+    #     ...
         
-    def set_troop_type():
-        ...
-
-# Class for all Player's Troops
-class Troops:
-    def __init__(self, troops: list[Troop] = None):
-        self.troops = troops
-        ...
+    # def set_troop_type():
+    #     ...

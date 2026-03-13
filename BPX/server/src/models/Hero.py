@@ -1,9 +1,10 @@
-class Hero:
-    def __init__(self, type, attack, defense, units, image, name):
-        self.type = type
-        self.attack = attack
-        self.defense = defense
-        self.units = units
-        self.image = image
-        self.name = name
-        ...
+from django.db import models
+# import settings
+
+
+class Hero(models.Model):
+    hero_type = models.CharField(choices=('Shooter', 'Fighter', 'Rider'))
+    hero_attack = models.IntegerField()
+    hero_defence = models.IntegerField()
+    units = models.IntegerField()
+    hero_name = models.CharField()

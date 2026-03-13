@@ -46,4 +46,4 @@ class Player(models.Model):
                 if self.username in verified_members or self.username == verified_members:
                     return True, "Verified"
         else:
-            return False, "Player does not belong to an alliance."  
+            return False, "Player not found."  

@@ -1,12 +1,14 @@
+from django.db import models
+
+
 from .Player import Player
 
-class Alliance:
-    def __init__(self, name, abbrev, players):
-        self.name = name
-        self.abbrev = abbrev
-        self.players: list[Player] = players
-        ...
-        
+class Alliance(models.Model):
+    alliance_name = models.CharField()
+    alliance_abbrev = models.CharField()
+    # members = ForeignKey()
+
+    def __init__(self, name, abbrev, players):        
 
         def add_player():
             # if R4+, permission to add player
@@ -15,5 +17,4 @@ class Alliance:
         def remove_player():
             # if R4+, permission to remove player
             ...
-
         
