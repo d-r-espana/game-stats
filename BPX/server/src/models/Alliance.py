@@ -16,4 +16,4 @@ class Alliance:
             # if R4+, permission to remove player
             ...
 
-        def 
+        
