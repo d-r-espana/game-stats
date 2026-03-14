@@ -6,7 +6,7 @@ import prefill
 from .Troop import Troop
 
 
-PUBLIC_DATA = prefill
+alliances = prefill.public_data.get("Alliances", {})
 
 def get_languages():
     return {i: i for i in settings.LANGUAGE_CODE}
@@ -34,16 +34,12 @@ class Player(models.Model):
         return self.username
     
     def verify_membership(self):
-        alliances = PUBLIC_DATA.get("Alliances", {})
-
-        if self.alliance not in alliances:
-            return False, "Alliance unregistered or not found."
+        ranks = alliances.get(self.alliance)
+        if not ranks:
+            return False, "Alliance not found."
         
-        ranks = alliances[self.alliance]
-        if self.rank in ranks:
-            verified_members = ranks[self.rank]
-            if isinstance(verified_members, list):
-                if self.username in verified_members or self.username == verified_members:
-                    return True, "Verified"
-        else:
-            return False, "Player not found."  
+        verified_members = ranks.get(self.rank)
+        if isinstance(verified_members, list) and self.username in verified_members:
+            return True, "Verified."
+        
+        return False, "Player not found."
