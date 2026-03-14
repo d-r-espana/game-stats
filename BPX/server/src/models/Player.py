@@ -30,6 +30,9 @@ class Player(models.Model):
 
     objects = PlayerManager()
 
+    class Meta:
+        app_label = 'server'
+
     def __str__(self):
         return self.username
     

@@ -21,6 +21,9 @@ class Troop(models.Model):
     troop_total_dmg = models.IntegerField()
     troop_total_dmg_bonus = models.IntegerField()
 
+    class Meta:
+        app_label = 'server'
+
     # @property
     # def set_heroes(heroes):
     #     ...

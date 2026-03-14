@@ -8,3 +8,6 @@ class Hero(models.Model):
     hero_defence = models.IntegerField()
     units = models.IntegerField()
     hero_name = models.CharField()
+
+    class Meta:
+        app_label = 'server'   
